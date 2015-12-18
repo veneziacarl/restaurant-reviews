@@ -1,0 +1,27 @@
+<%= @restaurant.name %>
+<%= @restaurant.address %>
+<%= @restaurant.city %>
+<%= @restaurant.state %>
+<%= @restaurant.zip %>
+<%= @restaurant.description %>
+
+
+
+<hr>
+
+<%= link_to 'Add a Review', new_restaurant_review_path(@restaurant) %>
+
+<% if @restaurant.reviews.nil? %>
+No reviews yet!
+<% else %>
+  Reviews:
+  <ul class="review-list">
+    <% @restaurant.reviews.each do |review| %>
+    <li>
+      <%= review.rating %>
+      <%= review.body %>
+      <%= review.created_at.strftime("%B %d %Y") %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
